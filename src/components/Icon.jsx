@@ -101,6 +101,48 @@ export function Icon({ name, size = 20, color = 'currentColor', strokeWidth = 1.
           <path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l-5-5 5-5M5 12h12" />
         </svg>
       );
+    case 'bookmarkFill':
+      return (
+        <svg viewBox="0 0 24 24" width={size} height={size} fill={color} stroke="none">
+          <path d="M6 3h12v18l-6-4-6 4V3z" />
+        </svg>
+      );
+    case 'note':
+      return (
+        <svg viewBox="0 0 24 24" {...s}>
+          <path d="M4 4h12l4 4v12H4z" />
+          <path d="M16 4v4h4" />
+          <path d="M8 12h8M8 16h5" />
+        </svg>
+      );
+    case 'index':
+      return (
+        <svg viewBox="0 0 24 24" {...s}>
+          <path d="M4 5h10M4 12h16M4 19h12" />
+          <circle cx="20" cy="5" r="1" fill={color} stroke="none" />
+          <circle cx="20" cy="19" r="1" fill={color} stroke="none" />
+          <circle cx="18" cy="12" r="1" fill={color} stroke="none" />
+        </svg>
+      );
+    case 'library':
+      return (
+        <svg viewBox="0 0 24 24" {...s}>
+          <path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2V5z" />
+          <path d="M8 3v18" />
+        </svg>
+      );
+    case 'pin':
+      return (
+        <svg viewBox="0 0 24 24" {...s}>
+          <path d="M7 3h10v18l-5-4-5 4z" />
+        </svg>
+      );
+    case 'check':
+      return (
+        <svg viewBox="0 0 24 24" {...s}>
+          <path d="M5 12l5 5 9-11" />
+        </svg>
+      );
     default:
       return null;
   }

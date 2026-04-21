@@ -1,6 +1,335 @@
-// The library catalog.
-// `type: 'pdf'` → opens in the PDF viewer.
-// `type: 'typeset'` → reserved for future Unicode-typeset content.
+// Library catalog.
+// PDF page = printed page + 64  (verified at 3 independent points)
+//
+// Patro section: Years 18–33 (Patras 18–955)
+// Atmasiddhi: printed page 526 → PDF page 590
+// Hath-nondh: printed page ~632 → PDF page ~696
+// Bhavna Bodh / Moksha-mala: early front section (PDF pages ~86–133)
+
+// ─── helper ───────────────────────────────────────────────
+const p = (printedPage) => printedPage + 64;
+
+// ─── Patro (Letters) ──────────────────────────────────────
+// Each entry: { gu, to, year, pdfPage }
+// "to" field is the recipient in Gujarati where known.
+// Grouped by Samvat year as they appear in the original TOC.
+
+const PATRO = [
+  // ── વર્ષ ૧૮ મું (Year 18) ──
+  { gu: 'પત્ર ૧૮', to: 'બાવન અવધાન', year: 'સં. ૧૯૪૪', pdfPage: p(133) },
+  { gu: 'પત્ર ૧૯', to: '', year: 'સં. ૧૯૪૪', pdfPage: p(135) },
+
+  // ── વર્ષ ૧૯ મું (Year 19) ──
+  { gu: 'પત્ર ૩૭', to: 'પોતાને', year: 'સં. ૧૯૪૪', pdfPage: p(145) },
+
+  // ── વર્ષ ૨૦ મું (Year 20) ──
+  { gu: 'પત્ર ૬૭', to: '', year: 'સં. ૧૯૪૫', pdfPage: p(192) },
+  { gu: 'પત્ર ૬૮', to: '', year: 'સં. ૧૯૪૫', pdfPage: p(192) },
+  { gu: 'પત્ર ૮૫', to: '', year: 'સં. ૧૯૪૫', pdfPage: p(201) },
+  { gu: 'પત્ર ૮૮', to: '', year: 'સં. ૧૯૪૫', pdfPage: p(202) },
+  { gu: 'પત્ર ૧૦૦', to: '', year: 'સં. ૧૯૪૫', pdfPage: p(209) },
+  { gu: 'પત્ર ૧૦૨', to: '', year: 'સં. ૧૯૪૫', pdfPage: p(209) },
+
+  // ── વર્ષ ૨૧ મું (Year 21) ──
+  { gu: 'પત્ર ૧૦૩', to: '', year: 'સં. ૧૯૪૫', pdfPage: p(210) },
+  { gu: 'પત્ર ૧૦૭', to: 'શ્રી જૂઠાભાઈ', year: 'સં. ૧૯૪૫', pdfPage: p(210) },
+  { gu: 'પત્ર ૧૦૮', to: '', year: 'સં. ૧૯૪૫', pdfPage: p(211) },
+  { gu: 'પત્ર ૧૧૦', to: '', year: 'સં. ૧૯૪૬', pdfPage: p(214) },
+  { gu: 'પત્ર ૧૨૦', to: '', year: 'સં. ૧૯૪૬', pdfPage: p(218) },
+  { gu: 'પત્ર ૧૨૮', to: '', year: 'સં. ૧૯૪૬', pdfPage: p(222) },
+  { gu: 'પત્ર ૧૩૦', to: '', year: 'સં. ૧૯૪૬', pdfPage: p(222) },
+  { gu: 'પત્ર ૧૩૧', to: '', year: 'સં. ૧૯૪૬', pdfPage: p(223) },
+  { gu: 'પત્ર ૧૩૩', to: '', year: 'સં. ૧૯૪૬', pdfPage: p(224) },
+  { gu: 'પત્ર ૧૩૪', to: '', year: 'સં. ૧૯૪૬', pdfPage: p(224) },
+  { gu: 'પત્ર ૧૩૫', to: '', year: 'સં. ૧૯૪૬', pdfPage: p(225) },
+  { gu: 'પત્ર ૧૩૮', to: '', year: 'સં. ૧૯૪૬', pdfPage: p(225) },
+  { gu: 'પત્ર ૧૪૦', to: '', year: 'સં. ૧૯૪૬', pdfPage: p(226) },
+  { gu: 'પત્ર ૧૪૧', to: 'ઇચ્છટ્ ઋષ વિહીનેન', year: 'સં. ૧૯૪૬', pdfPage: p(228) },
+  { gu: 'પત્ર ૧૪૨', to: '', year: 'સં. ૧૯૪૬', pdfPage: p(228) },
+  { gu: 'પત્ર ૧૪૩', to: '', year: 'સં. ૧૯૪૬', pdfPage: p(228) },
+
+  // ── વર્ષ ૨૨ મું (Year 22) ──
+  { gu: 'પત્ર ૧૫૭', to: 'રોજનીશી', year: 'સં. ૧૯૪૭', pdfPage: p(232) },
+  { gu: 'પત્ર ૧૫૮', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(234) },
+  { gu: 'પત્ર ૧૬૬', to: 'શ્રી સૌભાગ્યભાઈ', year: 'સં. ૧૯૪૭', pdfPage: p(237) },
+  { gu: 'પત્ર ૧૬૮', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(238) },
+  { gu: 'પત્ર ૧૭૧', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(239) },
+  { gu: 'પત્ર ૧૭૮', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(240) },
+  { gu: 'પત્ર ૧૮૧', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(241) },
+  { gu: 'પત્ર ૧૮૪', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(242) },
+  { gu: 'પત્ર ૧૮૭', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(242) },
+  { gu: 'પત્ર ૧૮૮', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(243) },
+  { gu: 'પત્ર ૧૮૯', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(243) },
+  { gu: 'પત્ર ૧૯૦', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(244) },
+  { gu: 'પત્ર ૧૯૧', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(244) },
+  { gu: 'પત્ર ૧૯૨', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(244) },
+  { gu: 'પત્ર ૧૯૩', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(245) },
+  { gu: 'પત્ર ૧૯૪', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(245) },
+  { gu: 'પત્ર ૧૯૫', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(246) },
+  { gu: 'પત્ર ૧૯૯', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(247) },
+
+  // ── વર્ષ ૨૩ મું (Year 23) ──
+  { gu: 'પત્ર ૨૦૧', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(263) },
+  { gu: 'પત્ર ૨૧૩', to: 'શ્રી અંબાલાલભાઈ', year: 'સં. ૧૯૪૭', pdfPage: p(268) },
+  { gu: 'પત્ર ૨૧૫', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(270) },
+  { gu: 'પત્ર ૨૧૬', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(271) },
+  { gu: 'પત્ર ૨૧૭', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(271) },
+  { gu: 'પત્ર ૨૧૮', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(273) },
+  { gu: 'પત્ર ૨૧૯', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(274) },
+  { gu: 'પત્ર ૨૨૦', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(275) },
+  { gu: 'પત્ર ૨૨૧', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(275) },
+  { gu: 'પત્ર ૨૨૨', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(275) },
+  { gu: 'પત્ર ૨૨૩', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(275) },
+  { gu: 'પત્ર ૨૨૪', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(277) },
+  { gu: 'પત્ર ૨૨૫', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(277) },
+  { gu: 'પત્ર ૨૨૬', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(277) },
+  { gu: 'પત્ર ૨૨૭', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(278) },
+  { gu: 'પત્ર ૨૨૮', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(278) },
+  { gu: 'પત્ર ૨૨૯', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(278) },
+  { gu: 'પત્ર ૨૩૦', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(278) },
+  { gu: 'પત્ર ૨૩૧', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(278) },
+
+  // ── વર્ષ ૨૪ મું (Year 24) ──
+  { gu: 'પત્ર ૨૫૦', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(279) },
+  { gu: 'પત્ર ૨૫૪', to: 'શ્રી સૌભાગ્યભાઈ', year: 'સં. ૧૯૪૭', pdfPage: p(280) },
+  { gu: 'પત્ર ૨૫૫', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(281) },
+  { gu: 'પત્ર ૨૫૮', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(282) },
+  { gu: 'પત્ર ૨૬૦', to: '', year: 'સં. ૧૯૪૭', pdfPage: p(283) },
+  { gu: 'પત્ર ૨૬૫', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(284) },
+  { gu: 'પત્ર ૨૬૬', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(284) },
+  { gu: 'પત્ર ૨૬૭', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(285) },
+  { gu: 'પત્ર ૨૬૮', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(285) },
+  { gu: 'પત્ર ૨૬૯', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(285) },
+
+  // ── વર્ષ ૨૫ મું (Year 25) ──
+  { gu: 'પત્ર ૨૮૦', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(300) },
+  { gu: 'પત્ર ૨૮૧', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(300) },
+  { gu: 'પત્ર ૨૮૨', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(300) },
+  { gu: 'પત્ર ૨૮૩', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(300) },
+  { gu: 'પત્ર ૨૮૪', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(300) },
+  { gu: 'પત્ર ૨૮૮', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(301) },
+  { gu: 'પત્ર ૨૯૩', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(302) },
+  { gu: 'પત્ર ૨૯૪', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(302) },
+  { gu: 'પત્ર ૨૯૫', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(302) },
+  { gu: 'પત્ર ૨૯૯', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(305) },
+
+  // ── વર્ષ ૨૬ (Year 26) ──
+  { gu: 'પત્ર ૩૨૨', to: 'શ્રી લઘુરાજ સ્વામી', year: 'સં. ૧૯૪૮', pdfPage: p(315) },
+  { gu: 'પત્ર ૩૨૯', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(316) },
+  { gu: 'પત્ર ૩૩૧', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(317) },
+  { gu: 'પત્ર ૩૩૨', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(317) },
+  { gu: 'પત્ર ૩૩૩', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(317) },
+  { gu: 'પત્ર ૩૩૪', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(318) },
+  { gu: 'પત્ર ૩૩૫', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(319) },
+  { gu: 'પત્ર ૩૩૬', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(319) },
+  { gu: 'પત્ર ૩૩૮', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(319) },
+  { gu: 'પત્ર ૩૩૯', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(320) },
+  { gu: 'પત્ર ૩૪૦', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(320) },
+  { gu: 'પત્ર ૩૪૩', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(320) },
+  { gu: 'પત્ર ૩૪૪', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(321) },
+  { gu: 'પત્ર ૩૪૫', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(321) },
+  { gu: 'પત્ર ૩૪૮', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(322) },
+  { gu: 'પત્ર ૩૪૯', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(322) },
+  { gu: 'પત્ર ૩૫૦', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(322) },
+  { gu: 'પત્ર ૩૫૧', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(323) },
+  { gu: 'પત્ર ૩૫૨', to: '', year: 'સં. ૧૯૪૮', pdfPage: p(323) },
+
+  // ── વર્ષ ૨૭ (Year 27) ──
+  { gu: 'પત્ર ૩૮૭', to: '', year: 'સં. ૧૯૪૯', pdfPage: p(341) },
+  { gu: 'પત્ર ૩૯૫', to: '', year: 'સં. ૧૯૪૯', pdfPage: p(344) },
+  { gu: 'પત્ર ૩૯૯', to: '', year: 'સં. ૧૯૪૯', pdfPage: p(345) },
+  { gu: 'પત્ર ૪૦૦', to: '', year: 'સં. ૧૯૪૯', pdfPage: p(349) },
+  { gu: 'પત્ર ૪૦૫', to: '', year: 'સં. ૧૯૪૯', pdfPage: p(350) },
+  { gu: 'પત્ર ૪૧૦', to: '', year: 'સં. ૧૯૪૯', pdfPage: p(352) },
+  { gu: 'પત્ર ૪૧૫', to: '', year: 'સં. ૧૯૪૯', pdfPage: p(354) },
+  { gu: 'પત્ર ૪૧૬', to: 'શ્રી સૌભાગ્યભાઈ', year: 'સં. ૧૯૪૯', pdfPage: p(357) },
+  { gu: 'પત્ર ૪૧૮', to: '', year: 'સં. ૧૯૪૯', pdfPage: p(358) },
+  { gu: 'પત્ર ૪૧૯', to: '', year: 'સં. ૧૯૪૯', pdfPage: p(358) },
+  { gu: 'પત્ર ૪૨૦', to: '', year: 'સં. ૧૯૪૯', pdfPage: p(359) },
+  { gu: 'પત્ર ૪૨૧', to: '', year: 'સં. ૧૯૪૯', pdfPage: p(360) },
+
+  // ── વર્ષ ૨૮ (Year 28) ──
+  { gu: 'પત્ર ૪૪૯', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(371) },
+  { gu: 'પત્ર ૪૭૮', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(381) },
+  { gu: 'પત્ર ૪૮૪', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(383) },
+  { gu: 'પત્ર ૫૦૧', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(390) },
+  { gu: 'પત્ર ૫૦૫', to: 'શ્રી અંબાલાલભાઈ', year: 'સં. ૧૯૫૦', pdfPage: p(390) },
+  { gu: 'પત્ર ૫૦૬', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(391) },
+  { gu: 'પત્ર ૫૧૦', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(392) },
+  { gu: 'પત્ર ૫૧૧', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(392) },
+  { gu: 'પત્ર ૫૧૨', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(392) },
+  { gu: 'પત્ર ૫૧૩', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(392) },
+  { gu: 'પત્ર ૫૧૪', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(392) },
+  { gu: 'પત્ર ૫૧૫', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(393) },
+  { gu: 'પત્ર ૫૩૩', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(433) },
+  { gu: 'પત્ર ૫૩૪', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(433) },
+  { gu: 'પત્ર ૫૩૫', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(434) },
+  { gu: 'પત્ર ૫૩૬', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(434) },
+  { gu: 'પત્ર ૫૩૭', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(434) },
+  { gu: 'પત્ર ૫૩૯', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(436) },
+  { gu: 'પત્ર ૫૪૦', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(436) },
+
+  // ── વર્ષ ૨૯ (Year 29) ──
+  { gu: 'પત્ર ૫૫૧', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(440) },
+  { gu: 'પત્ર ૫૬૦', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(441) },
+  { gu: 'પત્ર ૫૬૩', to: '', year: 'સં. ૧૯૫૦', pdfPage: p(441) },
+  { gu: 'પત્ર ૫૬૬', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(443) },
+  { gu: 'પત્ર ૫૭૦', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(443) },
+  { gu: 'પત્ર ૫૭૩', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(444) },
+  { gu: 'પત્ર ૫૭૬', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(445) },
+  { gu: 'પત્ર ૫૮૦', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(445) },
+  { gu: 'પત્ર ૫૮૧', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(445) },
+  { gu: 'પત્ર ૫૮૪', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(446) },
+  { gu: 'પત્ર ૫૮૮', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(447) },
+  { gu: 'પત્ર ૫૯૩', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(449) },
+  { gu: 'પત્ર ૬૦૦', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(449) },
+  { gu: 'પત્ર ૬૦૧', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(449) },
+  { gu: 'પત્ર ૬૦૩', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(450) },
+
+  // ── વર્ષ ૩૦ (Year 30) ──
+  { gu: 'પત્ર ૬૪૬', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(460) },
+  { gu: 'પત્ર ૬૪૭', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(460) },
+  { gu: 'પત્ર ૬૪૮', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(460) },
+  { gu: 'પત્ર ૬૫૦', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(461) },
+  { gu: 'પત્ર ૬૫૧', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(461) },
+  { gu: 'પત્ર ૬૬૦', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(462) },
+  { gu: 'પત્ર ૬૬૫', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(463) },
+  { gu: 'પત્ર ૬૬૯', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(463) },
+  { gu: 'પત્ર ૬૭૨', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(464) },
+  { gu: 'પત્ર ૬૭૫', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(464) },
+  { gu: 'પત્ર ૬૮૨', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(465) },
+  { gu: 'પત્ર ૬૯૨', to: 'શ્રી મનસુખભાઈ', year: 'સં. ૧૯૫૧', pdfPage: p(465) },
+  { gu: 'પત્ર ૬૯૫', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(466) },
+  { gu: 'પત્ર ૬૯૯', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(467) },
+  { gu: 'પત્ર ૭૦૦', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(468) },
+  { gu: 'પત્ર ૭૦૧', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(469) },
+  { gu: 'પત્ર ૭૦૩', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(469) },
+  { gu: 'પત્ર ૭૦૪', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(469) },
+  { gu: 'પત્ર ૭૦૫', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(469) },
+  { gu: 'પત્ર ૭૦૭', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(470) },
+  { gu: 'પત્ર ૭૦૮', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(470) },
+  { gu: 'પત્ર ૭૦૯', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(470) },
+  { gu: 'પત્ર ૭૧૦', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(470) },
+  { gu: 'પત્ર ૭૧૧', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(471) },
+  { gu: 'પત્ર ૭૧૨', to: '', year: 'સં. ૧૯૫૧', pdfPage: p(471) },
+
+  // ── વર્ષ ૩૧ (Year 31) ──
+  { gu: 'પત્ર ૭૫૦', to: 'શ્રી લઘુરાજ સ્વામી', year: 'સં. ૧૯૫૨', pdfPage: p(479) },
+  { gu: 'પત્ર ૭૫૩', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(479) },
+  { gu: 'પત્ર ૭૫૫', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(480) },
+  { gu: 'પત્ર ૭૫૭', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(480) },
+  { gu: 'પત્ર ૭૫૮', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(481) },
+  { gu: 'પત્ર ૭૬૦', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(481) },
+  { gu: 'પત્ર ૭૬૨', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(482) },
+  { gu: 'પત્ર ૭૬૪', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(482) },
+  { gu: 'પત્ર ૭૬૬', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(483) },
+  { gu: 'પત્ર ૭૬૭', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(483) },
+  { gu: 'પત્ર ૭૬૮', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(484) },
+  { gu: 'પત્ર ૭૭૦', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(485) },
+  { gu: 'પત્ર ૭૭૩', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(485) },
+  { gu: 'પત્ર ૭૭૫', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(486) },
+  { gu: 'પત્ર ૭૭૬', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(486) },
+  { gu: 'પત્ર ૭૭૭', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(487) },
+  { gu: 'પત્ર ૭૭૯', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(487) },
+  { gu: 'પત્ર ૭૮૦', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(487) },
+  { gu: 'પત્ર ૭૮૧', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(488) },
+  { gu: 'પત્ર ૭૮૨', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(488) },
+  { gu: 'પત્ર ૭૮૩', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(488) },
+  { gu: 'પત્ર ૭૮૪', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(489) },
+  { gu: 'પત્ર ૭૮૫', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(489) },
+  { gu: 'પત્ર ૭૮૬', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(489) },
+  { gu: 'પત્ર ૭૮૭', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(490) },
+  { gu: 'પત્ર ૭૮૮', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(490) },
+  { gu: 'પત્ર ૭૮૯', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(490) },
+  { gu: 'પત્ર ૭૯૩', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(491) },
+  { gu: 'પત્ર ૭૯૬', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(492) },
+  { gu: 'પત્ર ૮૦૦', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(493) },
+
+  // ── વર્ષ ૩૨ (Year 32) ──
+  { gu: 'પત્ર ૮૩૩', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(502) },
+  { gu: 'પત્ર ૮૩૫', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(502) },
+  { gu: 'પત્ર ૮૩૬', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(502) },
+  { gu: 'પત્ર ૮૩૭', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(502) },
+  { gu: 'પત્ર ૮૩૮', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(502) },
+  { gu: 'પત્ર ૮૪૦', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(503) },
+  { gu: 'પત્ર ૮૪૧', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(503) },
+  { gu: 'પત્ર ૮૪૫', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(504) },
+  { gu: 'પત્ર ૮૪૬', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(504) },
+  { gu: 'પત્ર ૮૪૭', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(504) },
+  { gu: 'પત્ર ૮૪૮', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(505) },
+  { gu: 'પત્ર ૮૫૦', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(505) },
+  { gu: 'પત્ર ૮૫૧', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(506) },
+  { gu: 'પત્ર ૮૫૩', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(506) },
+  { gu: 'પત્ર ૮૫૫', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(507) },
+  { gu: 'પત્ર ૮૫૬', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(507) },
+  { gu: 'પત્ર ૮૫૭', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(508) },
+  { gu: 'પત્ર ૮૫૮', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(508) },
+  { gu: 'પત્ર ૮૫૯', to: '', year: 'સં. ૧૯૫૨', pdfPage: p(508) },
+
+  // ── વર્ષ ૩૩ (Year 33) ──
+  { gu: 'પત્ર ૮૯૬', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(540) },
+  { gu: 'પત્ર ૮૯૭', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(541) },
+  { gu: 'પત્ર ૮૯૮', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(541) },
+  { gu: 'પત્ર ૮૯૯', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(541) },
+  { gu: 'પત્ર ૯૦૦', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(542) },
+  { gu: 'પત્ર ૯૦૧', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(542) },
+  { gu: 'પત્ર ૯૦૨', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(542) },
+  { gu: 'પત્ર ૯૦૩', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(542) },
+  { gu: 'પત્ર ૯૦૪', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(543) },
+  { gu: 'પત્ર ૯૦૫', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(543) },
+  { gu: 'પત્ર ૯૦૬', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(543) },
+  { gu: 'પત્ર ૯૦૭', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(543) },
+  { gu: 'પત્ર ૯૦૮', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(544) },
+  { gu: 'પત્ર ૯૦૯', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(544) },
+  { gu: 'પત્ર ૯૧૦', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(544) },
+  { gu: 'પત્ર ૯૧૧', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(544) },
+  { gu: 'પત્ર ૯૧૨', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(544) },
+  { gu: 'પત્ર ૯૧૩', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(545) },
+  { gu: 'પત્ર ૯૧૪', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(545) },
+  { gu: 'પત્ર ૯૧૫', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(545) },
+  { gu: 'પત્ર ૯૧૬', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(545) },
+  { gu: 'પત્ર ૯૧૭', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(545) },
+  { gu: 'પત્ર ૯૫૫', to: '', year: 'સં. ૧૯૫૩', pdfPage: p(563) },
+];
+
+const VACHANAMRUT_TOC = {
+  sections: [
+    {
+      id: 'patro',
+      title: 'Patro — Letters',
+      titleGu: 'પત્રો',
+      count: 955,
+      items: PATRO,
+    },
+    {
+      id: 'atmasiddhi',
+      title: 'Atmasiddhi Shastra',
+      titleGu: 'આત્મસિદ્ધિ શાસ્ત્ર',
+      count: 1,
+      items: [
+        { gu: 'આત્મસિદ્ધિ શાસ્ત્ર', year: 'સં. ૧૯૫૨', pdfPage: p(526) },
+      ],
+    },
+    {
+      id: 'bhavna',
+      title: 'Bhavna Bodh',
+      titleGu: 'ભાવના બોધ',
+      count: 1,
+      items: [
+        { gu: '૧૨ ભાવના', year: 'સં. ૧૯૪૩', pdfPage: p(113) },
+      ],
+    },
+    {
+      id: 'mokshamala',
+      title: 'Moksha-mala',
+      titleGu: 'મોક્ષમાળા',
+      count: 1,
+      items: [
+        { gu: 'મોક્ષમાળા', year: 'સં. ૧૯૪૩', pdfPage: p(49) },
+      ],
+    },
+  ],
+};
 
 export const BOOKS = [
   {
@@ -18,20 +347,9 @@ export const BOOKS = [
       tone: 'saffron',
     },
     description:
-      'The definitive collection of Shrimad Rajchandra’s letters, writings, poems, and private notes, as compiled and published by the Shrimad Rajchandra Ashram, Agas.',
+      'The definitive collection of Shrimad Rajchandra\'s letters, writings, poems, and private notes, as compiled and published by the Shrimad Rajchandra Ashram, Agas.',
+    toc: VACHANAMRUT_TOC,
   },
-  // Future books can be added here.
-  // Example Unicode typeset entry (not yet content-backed):
-  // {
-  //   id: 'atmasiddhi',
-  //   title: 'Atmasiddhi Shastra',
-  //   titleGu: 'આત્મસિદ્ધિ શાસ્ત્ર',
-  //   type: 'typeset',
-  //   source: 'atmasiddhi',
-  //   ...
-  // },
 ];
 
-// Reserve a home for future hand-typed Unicode content
-// (Apurva Avasar, Atmasiddhi verses, etc.). Empty for now.
 export const TYPESET_CONTENT = {};

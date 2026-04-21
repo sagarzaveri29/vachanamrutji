@@ -6,6 +6,10 @@ const DEFAULTS = {
   themeId: 'paper',
   gujFont: 'noto',
   fontSize: 17,
+  layout: '1-up',              // '1-up' | '2-up'
+  pageTurn: 'slide',           // 'slide' | 'curl' | 'fade'
+  marginMeta: true,
+  saveReadingPosition: true,   // persist last-read page per book
 };
 
 export function useSettings() {

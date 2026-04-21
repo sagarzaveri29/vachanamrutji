@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { UI_SERIF, UI_SANS } from '../theme/tokens';
 import { BOOKS } from '../data/books';
 import { PlaceholderCover } from '../components/PlaceholderCover';
 import { Icon } from '../components/Icon';
+import { DisplayPanel } from '../components/DisplayPanel';
+import { ProfilePanel } from '../components/ProfilePanel';
 import { useAuth } from '../lib/auth';
 
-export function LibraryScreen({ theme, onOpenBook, onOpenSettings }) {
+export function LibraryScreen({ theme, settings, updateSettings, onOpenBook }) {
   const { user, signOut } = useAuth();
   const greeting = user?.name ? user.name.split(' ')[0] : 'Friend';
+  const [panel, setPanel] = useState(null);
 
   return (
     <div
@@ -46,47 +49,45 @@ export function LibraryScreen({ theme, onOpenBook, onOpenSettings }) {
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
           <button
-            onClick={onOpenSettings}
+            onClick={() => setPanel('display')}
             title="Display settings"
             style={iconBtn(theme)}
           >
             <Icon name="aa" size={18} color={theme.ink} />
           </button>
           <button
-            onClick={signOut}
-            title="Sign out"
-            style={iconBtn(theme)}
+            onClick={() => setPanel('profile')}
+            title="Profile"
+            style={{
+              ...iconBtn(theme),
+              padding: 0,
+              overflow: 'hidden',
+            }}
           >
-            <Icon name="logout" size={18} color={theme.ink} />
+            {user?.picture ? (
+              <img
+                src={user.picture}
+                alt={user.name}
+                referrerPolicy="no-referrer"
+                style={{ width: 32, height: 32, borderRadius: 16 }}
+              />
+            ) : (
+              <div
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: 16,
+                  background: theme.accentSoft,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: theme.accent,
+                }}
+              >
+                <Icon name="user" size={16} />
+              </div>
+            )}
           </button>
-          {user?.picture ? (
-            <img
-              src={user.picture}
-              alt={user.name}
-              referrerPolicy="no-referrer"
-              style={{
-                width: 32,
-                height: 32,
-                borderRadius: 16,
-                border: `0.5px solid ${theme.rule}`,
-              }}
-            />
-          ) : (
-            <div
-              style={{
-                width: 32,
-                height: 32,
-                borderRadius: 16,
-                background: theme.accentSoft,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: theme.accent,
-              }}
-            >
-              <Icon name="user" size={16} />
-            </div>
-          )}
         </div>
       </header>
 
@@ -205,6 +206,29 @@ export function LibraryScreen({ theme, onOpenBook, onOpenSettings }) {
           </div>
         </div>
       </div>
+
+      {/* Overlays */}
+      {panel === 'display' && (
+        <DisplayPanel
+          theme={theme}
+          settings={settings}
+          updateSettings={updateSettings}
+          onClose={() => setPanel(null)}
+          anchorRight={80}
+        />
+      )}
+      {panel === 'profile' && (
+        <ProfilePanel
+          theme={theme}
+          user={user}
+          daysWithBook={0}
+          settings={settings}
+          updateSettings={updateSettings}
+          counts={{ highlights: 0, notes: 0, pins: 0 }}
+          onSignOut={signOut}
+          onClose={() => setPanel(null)}
+        />
+      )}
     </div>
   );
 }
